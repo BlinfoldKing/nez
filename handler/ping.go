@@ -1,11 +1,21 @@
 package handler
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
-func Ping() Result {
+func Ping(request struct{}) Result {
+	fmt.Println("Coba")
 	return Ok(true)
 }
 
-func PingErr() Result {
+func PingErr(request struct{}) Result {
 	return Err(errors.New("hello error"))
+}
+
+func PingBody(request struct {
+	Name string `json:"name" validate:"required"`
+}) Result {
+	return Ok(request.Name)
 }

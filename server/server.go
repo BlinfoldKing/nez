@@ -11,6 +11,7 @@ func Init() error {
 
 	e.GET("ping", handler.Handler(handler.Ping))
 	e.GET("ping/error", handler.Handler(handler.PingErr))
+	e.POST("ping", handler.Handler(handler.PingBody))
 
 	e.Logger.Fatal(e.Start(":1323"))
 
